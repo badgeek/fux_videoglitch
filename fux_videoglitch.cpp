@@ -22,12 +22,17 @@ fux_videoglitch :: fux_videoglitch()
 {	
 	
 long size,src,i;    
-inletBlur = inlet_new(this->x_obj, &this->x_obj->ob_pd, &s_float, gensym("blur"));
+inletBlur = inlet_new(this->x_obj, &this->x_obj->ob_pd, &s_float, gensym("amount"));
+inletLength = inlet_new(this->x_obj, &this->x_obj->ob_pd, &s_float, gensym("length"));
+
 m_blur = 0;
 m_blurH = 240;
 m_blurW = 240;
 m_blurBpp = 2;
 size = 320 * 240 * 4;
+m_glitchAmount = 20;
+m_glitchLength = 10;
+
 }
 
 /////////////////////////////////////////////////////////
@@ -77,34 +82,41 @@ void fux_videoglitch :: processRGBAImage(imageStruct &image)
   // Resave image as JPG to Memory
   FreeImage_SaveToMemory(FIF_JPEG, GLITCH_FUCK, GLITCH_MEM, 0);
   
+  //FreeImage_Save(FIF_JPEG, GLITCH_FUCK, "/Volumes/xmanticorex/Users/xcorex/Public/Kinect/glitch.jpg", JPEG_QUALITYSUPERB);
+
+  //FreeImage_Unload(GLITCH_FUCK);	    
+  
+
   // Get Access to memory
   FreeImage_AcquireMemory(GLITCH_MEM, &GLITCH_DATA, (DWORD*) &GLITCH_SIZE);
   
   // Fuck the memory 
   //				 glitch amount
-  for(int i = 0; i < 5; i++)
+
+  for(int g=m_glitchAmount; g < (m_glitchAmount+m_glitchLength); g++  )
   {
-  	int GLITCH_POS = (GLITCH_START + random()) % (int) GLITCH_SIZE;
-  	GLITCH_DATA[GLITCH_POS] = '\0'; 
+	GLITCH_DATA[g] = '\0'; 
   }
+  
   
   // Rewind to Start of mem or Blank image
   FreeImage_SeekMemory(GLITCH_MEM, 0L, SEEK_SET);
   
   //Reload GLITCHED image
-  FIBITMAP *GLITCH_SAVED = FreeImage_LoadFromMemory(FIF_JPEG, GLITCH_MEM, 0);
-  
-  //int fwidth = FreeImage_GetWidth(GLITCH_SAVED); 
-  //int fheight = FreeImage_GetHeight(GLITCH_SAVED); 
-  
+  FIBITMAP *GLITCH_SAVED = FreeImage_LoadFromMemory(FIF_JPEG, GLITCH_MEM, 0);  
+
+  int fwidth = FreeImage_GetWidth(GLITCH_SAVED); 
+  int fheight = FreeImage_GetHeight(GLITCH_SAVED); 
+
   if (FreeImage_HasPixels(GLITCH_SAVED)){ 
   	int bytespp = FreeImage_GetLine(GLITCH_SAVED) / FreeImage_GetWidth(GLITCH_SAVED);
-  	for(int y = 0; y < image.ysize; y++) {
+  	for(int y = 0; y < fheight; y++) {
   		BYTE *bits = FreeImage_GetScanLine(GLITCH_SAVED, y);
-  		for(int x = 0; x < hlength; x++) {
-  			pixels[chRed]   = (unsigned char) bits[FI_RGBA_RED];
-  			pixels[chGreen] = (unsigned char) bits[FI_RGBA_GREEN];
-  			pixels[chBlue ] = (unsigned char) bits[FI_RGBA_BLUE];
+  		for(int x = 0; x < fwidth; x++) {
+			pixels[0] = 255;
+  			pixels[1] = (unsigned char) bits[FI_RGBA_RED];
+  			pixels[2] = (unsigned char) bits[FI_RGBA_GREEN];
+  			pixels[3] = (unsigned char) bits[FI_RGBA_BLUE];
   			pixels += 4;
   			bits += bytespp;
   		}
@@ -131,6 +143,8 @@ void fux_videoglitch :: obj_setupCallback(t_class *classPtr)
 {
 
     class_addmethod(classPtr, (t_method)&fux_videoglitch::blurCallback,gensym("amount"), A_DEFFLOAT, A_NULL);
+    class_addmethod(classPtr, (t_method)&fux_videoglitch::lengthCallback,gensym("length"), A_DEFFLOAT, A_NULL);
+
 }
 
 void fux_videoglitch :: blurCallback(void *data, t_floatarg value)
@@ -138,3 +152,7 @@ void fux_videoglitch :: blurCallback(void *data, t_floatarg value)
 	GetMyClass(data)->m_glitchAmount=(value);
 }
 
+void fux_videoglitch :: lengthCallback(void *data, t_floatarg value)
+{
+	GetMyClass(data)->m_glitchLength=(value);
+}

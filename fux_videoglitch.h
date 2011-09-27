@@ -50,8 +50,11 @@ CPPEXTERN_HEADER(fux_videoglitch, GemPixObj)
         unsigned int  *saved;
         int		m_blur;
         float	m_glitchAmount;
+		float	m_glitchLength;
         int		m_blurH,m_blurW,m_blurSize,m_blurBpp;
         t_inlet         *inletBlur;
+        t_inlet         *inletLength;
+
 
 		FIMEMORY *GLITCH_MEM;
 		FIBITMAP *GLITCH_FUCK;
@@ -61,8 +64,8 @@ CPPEXTERN_HEADER(fux_videoglitch, GemPixObj)
     
     	//////////
     	// Static member functions
-    	
-        static void blurCallback       (void *data, t_floatarg value);
+		static void lengthCallback(void *data, t_floatarg value);
+        static void blurCallback(void *data, t_floatarg value);
 
 
 };
