@@ -1,7 +1,7 @@
 # change to your local directories!
 PD_APP_DIR = /Applications/Pd-extended.app/Contents/Resources
-PD_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/pd
-GEM_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/Gem
+PD_DIR = /home/manticore/puredata/0.42/pd
+GEM_DIR = /home/manticore/puredata/0.42/Gem
 
 # build flags
 
@@ -13,7 +13,7 @@ ifeq ($(UNAME),Linux)
  CPPFLAGS += -DLINUX
  INCLUDES += -I/usr/include/lqt -fopenmp -I/usr/include/ImageMagick -I/usr/include/lqt -I/usr/include/avifile-0.7 -I/usr/include/FTGL -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/freetype2 -I$(GEM_DIR)/src -I$(PD_DIR)/src -I$(PD_DIR)
  LDFLAGS = -export_dynamic -shared
- LIBS = -shared -Wl,--export-dynamic -lftgl -lv4l2 -lv4l1 -laviplay -L/usr/lib -lquicktime -lpthread -lm -lz -ldl -lquicktime -lpthread -lm -lz -ldl -lMagick++ -lMagickCore -ldv -lmpeg3 -lstdc++ -lGLU -lGL -lXext -lXxf86vm -lXext -lX11 -ldl -lz -lm -lpthread
+ LIBS = -shared -Wl,--export-dynamic -lftgl -lv4l2 -lv4l1 -laviplay -L/usr/lib -lquicktime -lpthread -lm -lz -ldl -lquicktime -lpthread -lm -lz -ldl -lMagick++ -lMagickCore -ldv -lmpeg3 -lstdc++ -lGLU -lGL -lXext -lXxf86vm -lXext -lX11 -ldl -lz -lm -lpthread -lfreeimage
  EXTENSION = pd_linux
 endif
 ifeq ($(UNAME),Darwin)
