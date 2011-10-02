@@ -26,7 +26,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  // Resave image as JPG to Memory
  FreeImage_SaveToMemory(FIF_JPEG, GLITCH_FUCK, GLITCH_MEM, 0);
  FreeImage_AcquireMemory(GLITCH_MEM, &GLITCH_DATA, (DWORD*) &GLITCH_SIZE);
-/*
+
  for(int g=gStart; g < (gStart+gAmount); g++  )
  {
 	GLITCH_DATA[g] = '\0'; 
@@ -38,8 +38,10 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
 
  int fWidth = FreeImage_GetWidth(GLITCH_SAVED); 
  int fHeight = FreeImage_GetHeight(GLITCH_SAVED); 
-
- if (FreeImage_HasPixels(GLITCH_SAVED)){ 
+ 
+ bool haspixels = FreeImage_HasPixels(GLITCH_SAVED);
+ 
+ if (haspixels){ 
  	int bytespp = FreeImage_GetLine(GLITCH_SAVED) / FreeImage_GetWidth(GLITCH_SAVED);
  	for(int y = 0; y < fHeight; y++) {
  		BYTE *bits = FreeImage_GetScanLine(GLITCH_SAVED, y);
@@ -55,7 +57,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  }else{
  	//post("FUX_GLITCH-> bitmap too fucked to be displayed...");
  }
-*/
+
 
  //lets experiment with this
  FreeImage_Unload(GLITCH_FUCK);	    
