@@ -16,39 +16,7 @@ ifeq ($(UNAME),Linux)
  EXTENSION = pd_linux
 endif
 ifeq ($(UNAME),Darwin)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- CPPFLAGS += -DDARWIN
-=======
  CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
-=======
- CPPFLAGS += -DDARWIN -fpascal-strings  -arch i386
->>>>>>> parent of 72bdd0e... broken commit
  INCLUDES +=  -I/sw/include -I$(GEM_DIR)/src -I$(PD_DIR)/src -I$(PD_DIR) 
  LDFLAGS = -c -arch i386 
  LIBS =  -arch i386 -dynamiclib -mmacosx-version-min=10.3 -undefined dynamic_lookup -framework QuickTime -framework Carbon -framework AGL -framework OpenGL -arch i386 -lfreeimage -lstdc++ -ldl -lz -lm -lpthread -L/sw/lib -L$(PD_DIR)/bin -L$(PD_DIR)
@@ -62,39 +30,7 @@ SOURCES = fux_videoglitch
 
 all:
 	g++ $(LDFLAGS) $(INCLUDES) $(CPPFLAGS) -o $(SOURCES).o -c $(SOURCES).cpp
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	g++ -o $(SOURCES).$(EXTENSION) -arch i386 -dynamiclib -mmacosx-version-min=10.3 -undefined dynamic_lookup -framework QuickTime -framework Carbon -framework AGL -framework OpenGL -arch i386 ./*.o -L/sw/lib -lfreeimage -lstdc++ -ldl -lz -lm -lpthread -L$(PD_DIR)/bin -L$(PD_DIR)
-=======
 	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
-=======
-	g++ -o $(SOURCES).$(EXTENSION) $(LIBS) ./*.o
->>>>>>> parent of 72bdd0e... broken commit
 	rm -fr ./*.o
 deploy:
 	rm -fr $(PD_APP_DIR)/extra/$(SOURCES).$(EXTENSION)
