@@ -11,7 +11,7 @@
 #define INCLUDE_fux_videoglitch_H_ 
 
 #include "Base/GemPixObj.h"
-//#include "glitchWrapper.h"
+#include "glitchWrapper.h"
 
 /*-----------------------------------------------------------------
 -------------------------------------------------------------------
@@ -55,7 +55,7 @@ CPPEXTERN_HEADER(fux_videoglitch, GemPixObj)
         t_inlet         *inletBlur;
         t_inlet         *inletLength;
 
-		//glitchWrapper glitcher;
+		glitchWrapper glitcher;
 		
     private:
     

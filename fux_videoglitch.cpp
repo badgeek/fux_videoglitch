@@ -67,7 +67,7 @@ void fux_videoglitch :: processRGBAImage(imageStruct &image)
     saved = new unsigned int [m_blurSize];
   }
 
-  //glitcher.glitchEffect(m_blurW, m_blurH, pixels, m_glitchAmount, m_glitchLength);
+  glitcher.glitchEffect(m_blurW, m_blurH, pixels, m_glitchAmount, m_glitchLength);
 
 }
 
