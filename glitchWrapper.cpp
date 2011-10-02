@@ -1,4 +1,5 @@
 #include "glitchWrapper.h"
+#include "FreeImage.h"
 #include <stdlib.h>
 
 glitchWrapper::glitchWrapper()
@@ -13,6 +14,11 @@ glitchWrapper::~glitchWrapper()
 
 void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixels, int gStart, int gAmount)
 {
+	FIMEMORY *GLITCH_MEM;
+	FIBITMAP *GLITCH_FUCK;
+    BYTE *GLITCH_DATA;
+
+
  int GLITCH_SIZE;
  // Load image from ImageStruct to FreeImage Memory
  GLITCH_FUCK = FreeImage_ConvertFromRawBits((BYTE*)gPixels, gWidth, gHeight, 3 * gWidth, 24, 0, 0, 0, false);
@@ -20,7 +26,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  // Resave image as JPG to Memory
  FreeImage_SaveToMemory(FIF_JPEG, GLITCH_FUCK, GLITCH_MEM, 0);
  FreeImage_AcquireMemory(GLITCH_MEM, &GLITCH_DATA, (DWORD*) &GLITCH_SIZE);
-
+/*
  for(int g=gStart; g < (gStart+gAmount); g++  )
  {
 	GLITCH_DATA[g] = '\0'; 
@@ -49,11 +55,11 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  }else{
  	//post("FUX_GLITCH-> bitmap too fucked to be displayed...");
  }
-
+*/
 
  //lets experiment with this
  FreeImage_Unload(GLITCH_FUCK);	    
- FreeImage_Unload(GLITCH_SAVED);	    
+// FreeImage_Unload(GLITCH_SAVED);	    
  FreeImage_CloseMemory(GLITCH_MEM);
  free(GLITCH_DATA);
 

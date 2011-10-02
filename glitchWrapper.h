@@ -1,10 +1,5 @@
-#include "FreeImage.h"
-
 class glitchWrapper{
 private:
-	FIMEMORY *GLITCH_MEM;
-	FIBITMAP *GLITCH_FUCK;
-    BYTE *GLITCH_DATA;
 public:
 	glitchWrapper();
 	~glitchWrapper();
