@@ -10,6 +10,9 @@ CPPFLAGS = -g -O2 -fPIC -freg-struct-return -Os -falign-loops=32 -falign-functio
 
 UNAME := $(shell uname -s)
 ifeq ($(UNAME),Linux)
+ PD_APP_DIR = /usr/lib/pd-extended
+ PD_DIR = /home/manticore/puredata/0.42/Pd
+ GEM_DIR = /home/manticore/puredata/0.42/Gem
  CPPFLAGS += -DLINUX
  INCLUDES += -I/usr/include/lqt -fopenmp -I/usr/include/ImageMagick -I/usr/include/lqt -I/usr/include/avifile-0.7 -I/usr/include/FTGL -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/freetype2 -I$(GEM_DIR)/src -I$(PD_DIR)/src -I$(PD_DIR)
  LDFLAGS = -export_dynamic -shared
@@ -17,6 +20,9 @@ ifeq ($(UNAME),Linux)
  EXTENSION = pd_linux
 endif
 ifeq ($(UNAME),Darwin)
+ PD_APP_DIR = /Applications/Pd-extended.app/Contents/Resources
+ PD_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/pd
+ GEM_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/Gem
  CPPFLAGS += -DDARWIN -fpascal-strings -arch i386
  INCLUDES += -I/sw/include -I$(GEM_DIR)/src -I$(PD_DIR)/src -I$(PD_DIR)
  LDFLAGS = -c -arch i386
