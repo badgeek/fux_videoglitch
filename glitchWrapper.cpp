@@ -21,7 +21,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
 
  int GLITCH_SIZE;
  // Load image from ImageStruct to FreeImage Memory
- GLITCH_FUCK = FreeImage_ConvertFromRawBits((BYTE*)gPixels, gWidth, gHeight, 3 * gWidth, 24, 0, 0, 0, false);
+ GLITCH_FUCK = FreeImage_ConvertFromRawBits((BYTE*)gPixels, gWidth, gHeight, 4 * gWidth, 24, 1, 2, 3, false);
  GLITCH_MEM  = FreeImage_OpenMemory();
  // Resave image as JPG to Memory
  FreeImage_SaveToMemory(FIF_JPEG, GLITCH_FUCK, GLITCH_MEM, 0);

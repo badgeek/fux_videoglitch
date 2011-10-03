@@ -1,7 +1,7 @@
 # change to your local directories!
 PD_APP_DIR = /Applications/Pd-extended.app/Contents/Resources
-PD_DIR = /home/manticore/puredata/0.42/pd
-GEM_DIR = /home/manticore/puredata/0.42/Gem
+PD_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/pd
+GEM_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/Gem
 
 # build flags
 
