@@ -1,10 +1,4 @@
-# change to your local directories!
-PD_APP_DIR = /Applications/Pd-extended.app/Contents/Resources
-PD_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/pd
-GEM_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/Gem
-
 # build flags
-
 INCLUDES = -I$(PD_DIR)/include
 CPPFLAGS = -g -O2 -fPIC -freg-struct-return -Os -falign-loops=32 -falign-functions=32 -falign-jumps=32 -funroll-loops -ffast-math -mmmx
 
