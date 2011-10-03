@@ -21,7 +21,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
     DWORD GLITCH_SIZE;
 
  // Load image from ImageStruct to FreeImage Memory
- GLITCH_FUCK = FreeImage_ConvertFromRawBits((BYTE*)gPixels, gWidth, gHeight, 4 * gWidth, 24, 1, 2, 3, false);
+ GLITCH_FUCK = FreeImage_ConvertFromRawBits((BYTE*)gPixels, gWidth, gHeight, 4 * gWidth, 24, 0, 0, 0, false);
 
 
  
@@ -55,10 +55,10 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  	for(int y = 0; y < fHeight; y++) {
  		BYTE *bits = FreeImage_GetScanLine(GLITCH_SAVED, y);
  		for(int x = 0; x < fWidth; x++) {
-			gPixels[0] = 255;
- 			gPixels[1] = (unsigned char) bits[FI_RGBA_RED];
- 			gPixels[2] = (unsigned char) bits[FI_RGBA_GREEN];
- 			gPixels[3] = (unsigned char) bits[FI_RGBA_BLUE];
+			gPixels[3] = 255;
+ 			gPixels[0] = (unsigned char) bits[FI_RGBA_RED];
+ 			gPixels[1] = (unsigned char) bits[FI_RGBA_GREEN];
+ 			gPixels[2] = (unsigned char) bits[FI_RGBA_BLUE];
  			gPixels += 4;
  			bits += bytespp;
  		}
