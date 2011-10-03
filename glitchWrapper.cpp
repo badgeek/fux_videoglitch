@@ -45,11 +45,12 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
 
  GLITCH_SAVED = FreeImage_LoadFromMemory(FIF_JPEG, GLITCH_MEM, 0);  
  
-/* 
+
+ 
  int fWidth = FreeImage_GetWidth(GLITCH_SAVED); 
  int fHeight = FreeImage_GetHeight(GLITCH_SAVED); 
 
- if (FreeImage_HasPixels(GLITCH_SAVED)){ 
+ if ((BOOL)FreeImage_HasPixels(GLITCH_SAVED)){ 
  	int bytespp = FreeImage_GetLine(GLITCH_SAVED) / FreeImage_GetWidth(GLITCH_SAVED);
  	for(int y = 0; y < fHeight; y++) {
  		BYTE *bits = FreeImage_GetScanLine(GLITCH_SAVED, y);
@@ -62,10 +63,8 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
  			bits += bytespp;
  		}
  	}
- }else{
- 	//post("FUX_GLITCH-> bitmap too fucked to be displayed...");
  }
-*/
+
 
  //lets experiment with this
  FreeImage_Unload(GLITCH_SAVED);	    
