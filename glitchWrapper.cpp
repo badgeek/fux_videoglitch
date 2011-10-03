@@ -61,7 +61,7 @@ void glitchWrapper::glitchEffect(int gWidth, int gHeight, unsigned char * gPixel
 
  //lets experiment with this
  FreeImage_Unload(GLITCH_FUCK);	    
-// FreeImage_Unload(GLITCH_SAVED);	    
+ FreeImage_Unload(GLITCH_SAVED);	    
  FreeImage_CloseMemory(GLITCH_MEM);
  free(GLITCH_DATA);
 
