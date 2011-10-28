@@ -56,7 +56,8 @@ CPPEXTERN_HEADER(fux_videoglitch, GemPixObj)
         t_inlet         *inletLength;
 
 		glitchWrapper glitcher;
-		
+		imageStruct m_image;
+	    
     private:
     
     	//////////

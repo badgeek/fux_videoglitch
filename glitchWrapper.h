@@ -3,5 +3,5 @@ private:
 public:
 	glitchWrapper();
 	~glitchWrapper();
-	void glitchEffect(int gWidth, int gHeight, unsigned char * gPixels, int gStart, int gAmount);
+	void glitchEffect(int gWidth, int gHeight, unsigned char * gPixels, unsigned char * gTemp, int gStart, int gAmount);
 };
