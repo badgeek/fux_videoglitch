@@ -15,12 +15,12 @@ ifeq ($(UNAME),Linux)
 endif
 ifeq ($(UNAME),Darwin)
  PD_APP_DIR = /Applications/Pd-extended.app/Contents/Resources
- PD_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/pd
- GEM_DIR = /Users/xcorex/Documents/Documents/Projects/Puredata/PdSource/Pd-0.42.5-extended/Gem
+ PD_DIR = /Applications/Pd-extended.app/Contents/Resources/src/pd
+ GEM_DIR = /Applications/Pd-extended.app/Contents/Resources/src/Gem
  CPPFLAGS += -DDARWIN -fpascal-strings -arch i386
- INCLUDES += -I/sw/include -I$(GEM_DIR)/src -I$(PD_DIR)/src -I$(PD_DIR)
+ INCLUDES += -I/sw/include -I$(GEM_DIR) -I$(PD_DIR) -I$(PD_DIR)
  LDFLAGS = -c -arch i386
- LIBS = -arch i386 -dynamiclib -mmacosx-version-min=10.3 -undefined dynamic_lookup -framework QuickTime -framework Carbon -framework AGL -framework OpenGL -arch i386 -lstdc++ -ldl -lz -lm -lpthread -lfreeimage -L/sw/lib -L$(PD_DIR)/bin -L$(PD_DIR)
+ LIBS = -arch i386 -dynamiclib -mmacosx-version-min=10.3 -undefined dynamic_lookup -framework QuickTime -framework Carbon -framework AGL -framework OpenGL -arch i386 -lstdc++ -ldl -lz -lm -lpthread -lfreeimage -L/sw/lib -L$(PD_APP_DIR)/bin -L$(PD_DIR)
  EXTENSION = pd_darwin
 endif
 
