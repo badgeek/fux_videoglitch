@@ -12,10 +12,10 @@ RUN apt-get update \
         build-essential \
         gem-dev \
         git \
-        graphicsmagick-libmagick-dev-compat \
         libavifile-0.7-dev \
         libdv4-dev \
         libfreeimage-dev \
+        libmagickcore-dev \
         libmpeg3-dev \
         libquicktime-dev \
         libv4l-dev \
