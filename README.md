@@ -22,8 +22,9 @@ git clone git@github.com:badgeek/fux_videoglitch.git
 # With default image name
 make docker-image
 
-# With a custom image name
-make docker-image DOCKER_IMAGE=<repo/imagename>
+# With a custom image name and tag
+# DOCKER_IMAGE_TAG default value is the current commit short hash
+make docker-image DOCKER_IMAGE=<repo/imagename> DOCKER_IMAGE_TAG=x.y.z
 ```
 
 ### Publish Docker image
@@ -32,8 +33,9 @@ make docker-image DOCKER_IMAGE=<repo/imagename>
 # With default image name
 make docker-push
 
-# With a custom image name
-make docker-push DOCKER_IMAGE=<repo/imagename>
+# With a custom image name and tag
+# DOCKER_IMAGE_TAG default value is the current commit short hash
+make docker-push DOCKER_IMAGE=<repo/imagename> DOCKER_IMAGE_TAG=x.y.z
 ```
 
 ### Attach to container
