@@ -19,7 +19,21 @@ git clone git@github.com:badgeek/fux_videoglitch.git
 ### Build Docker image
 
 ```sh
+# With default image name
 make docker-image
+
+# With a custom image name
+make docker-image DOCKER_IMAGE=<repo/imagename>
+```
+
+### Publish Docker image
+
+```sh
+# With default image name
+make docker-push
+
+# With a custom image name
+make docker-push DOCKER_IMAGE=<repo/imagename>
 ```
 
 ### Attach to container

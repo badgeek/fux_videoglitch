@@ -2,6 +2,10 @@
 INCLUDES = -I$(PD_DIR)/include
 CPPFLAGS = -g -O2 -fPIC -freg-struct-return -Os -falign-loops=32 -falign-functions=32 -falign-jumps=32 -funroll-loops -ffast-math -mmmx
 
+# Docker parameters
+DOCKER_IMAGE=constructionsincongrues/fux_videoglitch
+DOCKER_IMAGE_TAG=`git rev-parse --short HEAD`
+
 UNAME := $(shell uname -s)
 ifeq ($(UNAME),Linux)
  PD_APP_DIR = /usr/lib/pd-extended
@@ -49,11 +53,15 @@ distro: clean all
 	rm *.o
 
 docker-attach:
-	docker run --rm -it -v $(PWD):/usr/local/src constructionsincongrues/fux_videoglitch /bin/bash
-
-docker-image:
-	docker build -t constructionsincongrues/fux_videoglitch:`git rev-parse --short HEAD` .
-	docker tag constructionsincongrues/fux_videoglitch:`git rev-parse --short HEAD` constructionsincongrues/fux_videoglitch:latest
+	docker run --rm -it -v $(PWD):/usr/local/src $(DOCKER_IMAGE) /bin/bash
 
 docker-compile:
-	docker run --rm -v $(PWD):/usr/local/src constructionsincongrues/fux_videoglitch
+	docker run --rm -v $(PWD):/usr/local/src $(DOCKER_IMAGE)
+
+docker-image:
+	docker build -t $(DOCKER_IMAGE):$(DOCKER_IMAGE_TAG) .
+	docker tag $(DOCKER_IMAGE):$(DOCKER_IMAGE_TAG) $(DOCKER_IMAGE):latest
+
+docker-push:
+	docker-push $(DOCKER_IMAGE):$(DOCKER_IMAGE_TAG)
+	docker-push $(DOCKER_IMAGE):latest
