@@ -40,6 +40,8 @@ all:
 
 all-docker:
 	make PD_DIR=/usr/include/pd GEM_DIR=/usr/include/Gem IMAGEMAGIK_DIR=/usr/include/ all
+	mkdir -p dist
+	mv fux_videoglitch.pd_linux dist/
 
 deploy:
 	rm -fr $(PD_APP_DIR)/extra/$(SOURCES).$(EXTENSION)

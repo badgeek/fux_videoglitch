@@ -3,7 +3,7 @@
 ## Compile
 
 ```sh
-docker run --rm -v ${PWD}:/usr/local/src constructionsincongrues/fux_videoglitch
+docker run --rm -v ${PWD}:/usr/local/src/dist constructionsincongrues/fux_videoglitch
 ```
 
 `fux_videoglitch.pd_linux` is built in current directory. The `ubuntu:18.04` image is used to build the binary.
